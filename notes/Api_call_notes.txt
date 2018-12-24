@@ -1,0 +1,52 @@
+Arguments
+    reference:
+        https://www.flickr.com/services/api/flickr.photos.search.html
+    
+    example call:
+        https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=1ddb7df62cbdc4e07f6ec75ca78e2960&format=json&nojsoncallback=1&tags=car
+
+    tags (Optional)
+        A comma-delimited list of tags.
+    
+    tag_mode (Optional)
+        Either 'any' for an OR combination of tags, or 'all' for an AND combination.
+        default = any
+        //we will give 'all'
+
+    sort (Optional)
+        The order in which to sort returned photos.
+        default = date-posted-desc 
+        The possible values are: date-posted-asc, date-posted-desc, date-taken-asc, date-taken-desc, interestingness-desc, interestingness-asc, and relevance.
+        //we will give 'interestingness-desc'
+
+    media (Optional)
+        Filter results by media type. Possible values are all (default), photos or videos
+
+    page (Optional)
+        The page of results to return. If this argument is omitted, it defaults to 1.
+        //we will give this 'page=increment' as we scroll
+
+    per_page (Optional)
+        Number of photos to return per page. If this argument is omitted, it defaults to 100. The maximum allowed value is 500.
+    
+Photo Source URLs
+    reference:
+        https://www.flickr.com/services/api/misc.urls.html
+
+    format:
+        https://farm{farm-id}.staticflickr.com/{server-id}/{id}_{secret}_[mstzb].jpg
+
+    Size Suffixes
+        s	small square 75x75
+        q	large square 150x150
+        t	thumbnail, 100 on longest side
+        m	small, 240 on longest side
+        n	small, 320 on longest side
+        -	medium, 500 on longest side
+        z	medium 640, 640 on longest side
+        c	medium 800, 800 on longest side†
+        b	large, 1024 on longest side*
+        h	large 1600, 1600 on longest side†
+        k	large 2048, 2048 on longest side†
+        o	original image, either a jpg, gif or png, depending on source format
+        //we will use 'z' ??, (is default '-', it might be just fine)
