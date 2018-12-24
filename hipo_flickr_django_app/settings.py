@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
     'whitenoise.runserver_nostatic', #added by heroku
     'django.contrib.staticfiles',
+    'FlickrApp',
 ]
 
 MIDDLEWARE = [
