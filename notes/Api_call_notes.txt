@@ -11,7 +11,8 @@ Arguments
     tag_mode (Optional)
         Either 'any' for an OR combination of tags, or 'all' for an AND combination.
         default = any
-        //we will give 'all'
+        //we will give 'all' as default
+        //logic for OR: if OR is inside the tags search with or
 
     sort (Optional)
         The order in which to sort returned photos.
