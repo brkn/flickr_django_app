@@ -11,9 +11,12 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 """
 
 import os
+import dj_database_url #added by heroku
+import django_heroku #added by heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__)) #added by heroku
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,9 +28,6 @@ SECRET_KEY = '*yloef8mi12629t9t$@o0vzl8=yo5gowzvn#21$9qr60kk+_!k'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,11 +36,16 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    # Disable Django's own staticfiles handling in favour of WhiteNoise, for
+    # greater consistency between gunicorn and `./manage.py runserver`. See:
+    # http://whitenoise.evans.io/en/stable/django.html#using-whitenoise-in-development
+    'whitenoise.runserver_nostatic', #added by heroku
     'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', #added by heroku
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -63,6 +68,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            #'debug': DEBUG, #added by heroku and disabled for now
         },
     },
 ]
@@ -111,10 +117,29 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = True
+# Change 'default' database configuration with $DATABASE_URL. #added by heroku
+DATABASES['default'].update(dj_database_url.config(conn_max_age=500, ssl_require=True)) #added by heroku
 
+# Honor the 'X-Forwarded-Proto' header for request.is_secure() #added by heroku
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https') #added by heroku
+
+# Allow all host headers #added by heroku
+ALLOWED_HOSTS = ['*'] #added by heroku
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles') #added by heroku
 STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = [ #added by heroku
+    os.path.join(PROJECT_ROOT, 'static'),#added by heroku
+]#added by heroku
+
+# Simplified static file serving.
+# https://warehouse.python.org/project/whitenoise/
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'#added by heroku
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())#added by heroku
