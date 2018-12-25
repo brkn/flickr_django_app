@@ -5,6 +5,16 @@ h3{
     font-size: 1em;
     font-weight: bold
 }
+main{
+    display: grid;
+    grid-template-columns: 4fr, 1fr;
+}
+.recent_searches{
+    grid-column: 2;
+}
+.photos_wrapper{
+    grid-column: 1;
+}
 /* header */
 .fade-carousel {
     position: relative;
@@ -36,6 +46,7 @@ h3{
 .hero h3 {
     font-size: 1em;    
     font-style: italic;
+    font-weight: normal;
     margin: 0;
     padding: 0;
     text-align: right;
