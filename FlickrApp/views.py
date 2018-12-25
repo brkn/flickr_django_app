@@ -5,7 +5,7 @@ import re
 from .models import RecentSearch
 
 
-def getPhotos(url=None, tags=['cat'], tag_mode='all', page=None):
+def getPhotos(url=None, tags=['kittens', 'puppies'], tag_mode='all', page=None):
     if url:
         pass
     else:
