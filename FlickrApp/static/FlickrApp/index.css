@@ -1,6 +1,10 @@
 body{
     background-color: #fafbfc;
 }
+h3{
+    font-size: 1em;
+    font-weight: bold
+}
 /* header */
 .fade-carousel {
     position: relative;
