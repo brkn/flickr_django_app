@@ -5,7 +5,7 @@ import re
 from .models import RecentSearch
 
 
-def getPhotos(url=None, tags=['cat', 'dog'], tag_mode='all', page=None):
+def getPhotos(url=None, tags=['cat'], tag_mode='all', page=None):
     if url:
         pass
     else:
@@ -36,7 +36,8 @@ def getWordsFromUserInput(input: str) -> list:
 
 def index(request):
     context = {
-       'keywords': RecentSearch.objects.all().order_by('-date_entry')[:20]
+        'keywords': list(RecentSearch.objects.all().order_by('-date_entry').values())[:20]
     }
     context['photos'], url = getPhotos()
+    context['photos'] = [dict(photo, link=f"https://farm{photo['farm']}.staticflickr.com/{photo['server']}/{photo['id']}_{photo['secret']}_z.jpg") for photo in context['photos']]
     return render(request, 'FlickrApp/index.html', context)
