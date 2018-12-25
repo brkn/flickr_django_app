@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import requests
 import json
+import re
 
 
 def getPhotos(url=None, tags=['cat', 'dog'], tag_mode='all', page=None):
@@ -26,7 +27,13 @@ def getPhotos(url=None, tags=['cat', 'dog'], tag_mode='all', page=None):
     return response, url
 
 
+def getWordsFromUserInput(input: str) -> list:
+    input = re.sub(r'[\W_]', ' ', input)
+    input = input.lower()
+    return input.split()
+
+
 def index(request):
     context = {}
-    context['photos'], _ = getPhotos()
+    context['photos'], url = getPhotos()
     return render(request, 'FlickrApp/index.html', context)
