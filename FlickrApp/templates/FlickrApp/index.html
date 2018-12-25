@@ -11,6 +11,7 @@
         crossorigin="anonymous">
     <link rel="stylesheet" href={% static 'FlickrApp/index.css' %}>
     <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+    <link rel="icon" href="https://img.icons8.com/doodle/48/000000/flickr.png"/>
 </head>
 
 <body>
@@ -37,14 +38,14 @@
 
     <main role="main" class="container">
         <div class="recent_searches">
-            <h3>Recent Searches</h3>
+            <h3>Previous Searches</h3>
             <ul>
                 {% for keyword in keywords%}
                 <li>{{ keyword }}</li>
-                {% endfor%}
+                {% endfor %}
             </ul>
         </div> 
-        <div class="photos">
+        <div class="photos_wrapper">
             {% for photo in photos %}
             <div>
                 <h1>{{ photo.id }}</h1>
