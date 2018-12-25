@@ -2,6 +2,7 @@ from django.shortcuts import render
 import requests
 import json
 import re
+from .models import RecentSearch
 
 
 def getPhotos(url=None, tags=['cat', 'dog'], tag_mode='all', page=None):
@@ -36,4 +37,5 @@ def getWordsFromUserInput(input: str) -> list:
 def index(request):
     context = {}
     context['photos'], url = getPhotos()
+    context['keywords'] = RecentSearch.objects.all().order_by('-date_entry')[:20]
     return render(request, 'FlickrApp/index.html', context)
