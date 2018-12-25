@@ -6,8 +6,8 @@ Deploying to heroku:
     ✔ Check if Procfile is necessary @started(18-12-24 06:05) @done(18-12-24 20:22) @lasted(14h17m35s)
         Added the procfile
 Database:
-    ☐ Change SQLite to postgresql @started(18-12-24 06:07)
-
+    ✔ Change SQLite to postgresql @started(18-12-24 06:07) @done(18-12-25 23:27) @lasted(1d17h20m26s)
+        it's already psql?
 CSS:
     ☐ Font: @started(18-12-25 00:23)
         html
@@ -31,4 +31,4 @@ CSS:
             //not necessary?
             display:subgrid;
             grid-row: auto / span 2;
-
+    ☐ Change searchbar @started(18-12-25 23:26)
