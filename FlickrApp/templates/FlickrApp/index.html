@@ -34,14 +34,26 @@
         <input type="text" id="search-bar" placeholder="cats AND dogs">
         <a href="#"><img class="search-icon" src="http://www.endlessicons.com/wp-content/uploads/2012/12/search-icon.png"></a>
     </form>
+
     <main role="main" class="container">
-        {% for photo in photos %}
-        <div>
-            <h1>{{ photo.id }}</h1>
-            <p>{{ photo.title }}</p>
+        <div class="recent_searches">
+            <h3>Recent Searches</h3>
+            <ul>
+                {% for keyword in keywords%}
+                <li>{{ keyword }}</li>
+                {% endfor%}
+            </ul>
+        </div> 
+        <div class="photos">
+            {% for photo in photos %}
+            <div>
+                <h1>{{ photo.id }}</h1>
+                <p>{{ photo.title }}</p>
+            </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </main>
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
