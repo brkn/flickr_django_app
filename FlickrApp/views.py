@@ -35,7 +35,8 @@ def getWordsFromUserInput(input: str) -> list:
 
 
 def index(request):
-    context = {}
+    context = {
+       'keywords': RecentSearch.objects.all().order_by('-date_entry')[:20]
+    }
     context['photos'], url = getPhotos()
-    context['keywords'] = RecentSearch.objects.all().order_by('-date_entry')[:20]
     return render(request, 'FlickrApp/index.html', context)
