@@ -1,3 +1,7 @@
 from django.db import models
+from django.utils import timezone
 
-# Create your models here.
+
+class RecentSearch(models.Model):
+    keyword = models.CharField(max_length=95)
+    date_entry = models.DateTimeField(default=timezone.now)
