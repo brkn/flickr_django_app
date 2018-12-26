@@ -48,8 +48,8 @@
         <div class="photos_wrapper">
             {% for photo in photos %}
             <div class=image_cell>
-                <img src= {{ photo.link }} alt={{ photo.title }}>
-                <div class= subtext>{{ photo.title }}</div>
+                <img src="{{ photo.link }}"  alt="{{ photo.title }}">
+                <div class=subtext>{{ photo.title }}</div>
             </div>
             {% endfor %}
         </div>
