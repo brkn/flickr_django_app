@@ -1,8 +1,12 @@
+After submission todo:
+    ☐ How to fix pylint error for "model 'x' has no member 'object' @started(18-12-26 05:07)
+
 Deploying to heroku:
     ✔ Check if django-heroku package is necessary @started(18-12-24 05:59) @done(18-12-24 20:22) @lasted(14h23m31s)
         reference: https://github.com/heroku/django-heroku
         installed and added to requirements.txt
     ☐ Check if debug=True value is correct @started(18-12-24 05:59)
+        google: is it okay to deploy to heroku with debug=True?
     ✔ Check if Procfile is necessary @started(18-12-24 06:05) @done(18-12-24 20:22) @lasted(14h17m35s)
         Added the procfile
 Database:
@@ -16,7 +20,7 @@ CSS:
             font-family: 'Indie Flower', cursive;
     ✔ Background color: @started(18-12-25 01:49) @done(18-12-25 18:50) @lasted(17h1m8s)
         #fafbfc;
-    ☐ Grid: @started(18-12-25 01:49)
+    ✔ Grid: @started(18-12-25 01:49) @done(18-12-26 05:32) @lasted(1d3h43m18s)
         Photos content will be inside a div Grid-Wrapper
         search: masonry layout
         .grid{
