@@ -37,7 +37,10 @@ def getWordsFromUserInput(input: str) -> list:
 def index(request):
     context = {}
     if request.method == 'POST':
-        pass
+        """ tags = getWordsFromUserInput(userinput)
+        context['photos'], url = getPhotos()
+        recentSearch = RecentSearch(' '.join(tags) )
+        recentSearch.save() """
     else:
         context['photos'], url = getPhotos()
     context['photos'] = [dict(
