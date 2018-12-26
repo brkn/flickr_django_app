@@ -1,5 +1,6 @@
 After submission todo:
     ☐ How to fix pylint error for "model 'x' has no member 'object' @started(18-12-26 05:07)
+    ☐ Add search magnify icon @started(18-12-26 17:22)
 
 Deploying to heroku:
     ✔ Check if django-heroku package is necessary @started(18-12-24 05:59) @done(18-12-24 20:22) @lasted(14h23m31s)
