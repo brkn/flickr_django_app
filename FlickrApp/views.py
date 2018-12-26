@@ -35,9 +35,11 @@ def getWordsFromUserInput(input: str) -> list:
 
 
 def index(request):
-    context = {
-        'keywords': list(RecentSearch.objects.all().order_by('-date_entry').values())[:20]
-    }
-    context['photos'], url = getPhotos()
+    context = {}
+    if request.method == 'POST':
+        pass
+    else:
+        context['photos'], url = getPhotos()
     context['photos'] = [dict(photo, link=f"https://farm{photo['farm']}.staticflickr.com/{photo['server']}/{photo['id']}_{photo['secret']}_o.jpg") for photo in context['photos']]
+    context['keywords'] =list(RecentSearch.objects.all().order_by('-date_entry').values())[:20]
     return render(request, 'FlickrApp/index.html', context)
