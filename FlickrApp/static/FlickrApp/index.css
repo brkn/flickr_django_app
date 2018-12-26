@@ -132,10 +132,11 @@ main{
     border-color: #212121;
     transition: .5s;
 }
-.search-button::before{
+.search-button{
     cursor: pointer;
-    position: inline;
+    position: relative;
+    float: right;
     font-family: 'fontawesome';
-    top: 0;
-    right: 1.5rem;
+    top: -5.5vh;
+    right: 1vw; 
 }
