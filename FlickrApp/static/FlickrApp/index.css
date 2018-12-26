@@ -25,6 +25,11 @@ main{
     float: left;
     position: relative;
 }
+.image_cell .img{
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
 .subtext{
     color: #575b5f;
     font-size: 12px;
