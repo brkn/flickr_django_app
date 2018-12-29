@@ -1,6 +1,6 @@
 After submission todo:
     ☐ How to fix pylint error for "model 'x' has no member 'object' @started(18-12-26 05:07)
-    ☐ Add search magnify icon @started(18-12-26 17:22)
+    ✔ Add search magnify icon @started(18-12-26 17:22) @done(18-12-29 19:28) @lasted(3d2h6m2s)
 
 Deploying to heroku:
     ✔ Check if django-heroku package is necessary @started(18-12-24 05:59) @done(18-12-24 20:22) @lasted(14h23m31s)
@@ -36,4 +36,11 @@ CSS:
             //not necessary?
             display:subgrid;
             grid-row: auto / span 2;
-    ☐ Change searchbar @started(18-12-25 23:26)
+    ✔ Change searchbar @started(18-12-25 23:26) @done(18-12-29 19:27) @lasted(3d20h1m41s)
+
+Onorganized:
+    ☐ Check if csrf_token is necessery at index.html template @started(18-12-29 19:21)
+        google search: {% csrf_token %}
+    ✔ Fix css from old form @started(18-12-29 19:59) @done(18-12-29 20:51) @lasted(52m38s)
+        <input type="text" placeholder="kittens and puppies"/>
+        
