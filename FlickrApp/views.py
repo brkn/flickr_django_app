@@ -53,7 +53,7 @@ def index(request):
     context = {}
     if request.method == 'POST':
         form = SearchForm(request.POST)
-        if form.is_valid():  # removed for now
+        if form.is_valid():
             tags, tag_mode = getTagsFromUserInput(
                 form.cleaned_data['keyword'])
             # form.cleaned_data.get('keyword') #? test this if the other doesnt work

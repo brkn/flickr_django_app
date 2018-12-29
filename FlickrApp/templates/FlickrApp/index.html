@@ -35,7 +35,7 @@
         <form class="field-input" method="POST", label="searchBar">
             {% csrf_token %}
             {{ form.keyword }}
-            <div class=search-button>&#x1F50D</div>
+            <div class=search-button onClick="javascript:this.parentNode.submit();">&#x1F50D</div>
         </form>
     </div>
     <main role="main" class="container">
