@@ -28,10 +28,24 @@ def getPhotos(url=None, tags=['kittens', 'puppies'], tag_mode='all', page=None):
     return response, url
 
 
-def getWordsFromUserInput(input: str) -> list:
+def getTagsFromUserInput(input: str):
     input = re.sub(r'[\W_]', ' ', input)
     input = input.lower()
-    return input.split()
+    tags = input.split()
+    tag_mode = "all"
+    if("and" in tags or "all" in tags):
+        if "and" in tags:
+            tags.remove("and")
+        if "all" in tags:
+            tags.remove("all")
+        tag_mode = "all"
+    elif("or" in tags or "any" in tags):
+        if "or" in tags:
+            tags.remove("or")
+        if "any" in tags:
+            tags.remove("any")
+        tag_mode = "any"
+    return tags, tag_mode
 
 
 def index(request):
