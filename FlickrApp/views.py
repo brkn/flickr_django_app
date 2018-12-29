@@ -3,6 +3,7 @@ import requests
 import json
 import re
 from .models import RecentSearch
+from .forms import SearchForm
 
 
 def getPhotos(url=None, tags=['kittens', 'puppies'], tag_mode='all', page=None):
@@ -51,13 +52,19 @@ def getTagsFromUserInput(input: str):
 def index(request):
     context = {}
     if request.method == 'POST':
-        """ tags = getWordsFromUserInput(userinput)
-        context['photos'], url = getPhotos()
-        recentSearch = RecentSearch(' '.join(tags) )
-        recentSearch.save() """
+        form = SearchForm(request.POST)
+        if form.is_valid():  # removed for now
+            tags, tag_mode = getTagsFromUserInput(
+                form.cleaned_data['keyword'])
+            # form.cleaned_data.get('keyword') #? test this if the other doesnt work
+            context['photos'], url = getPhotos(tags=tags, tag_mode=tag_mode)
+            recentSearch = RecentSearch(keyword=' '.join(tags))
+            recentSearch.save()
     else:
+        form = SearchForm()
         context['photos'], url = getPhotos()
-    context['photos'] = [dict(
+    context['form'] = form
+    context['photos'] = [dict(  # this is not redecleration, it's just adding a link attribute to list
         photo, link=f"https://farm{photo['farm']}.staticflickr.com/{photo['server']}/{photo['id']}_{photo['secret']}.jpg") for photo in context['photos']]
     context['keywords'] = list(
         RecentSearch.objects.all().order_by('-date_entry').values())[:20]
