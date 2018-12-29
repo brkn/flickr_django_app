@@ -32,8 +32,9 @@
         </div>
     </div>
     <div class="search-container">
-        <form class="field-input">
-            <input type="text" placeholder="kittens and puppies"/>
+        <form class="field-input" method="POST", label="searchBar">
+            {% csrf_token %}
+            {{ form.keyword }}
             <div class=search-button>&#x1F50D</div>
         </form>
     </div>
